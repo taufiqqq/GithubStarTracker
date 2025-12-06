@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     const currentRef = observerRef.current;
-    if (!currentRef) return;
+    if (!currentRef || loading) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -19,7 +19,7 @@ function App() {
           loadMore();
         }
       },
-      { 
+      {
         threshold: 0,
         rootMargin: '100px'
       }
@@ -30,7 +30,7 @@ function App() {
     return () => {
       observer.disconnect();
     };
-  }, [loadMore]);
+  }, [repos.length]); // Only recreate when repos change (after successful loads)
 
   return (
     <div className="app">
@@ -72,12 +72,12 @@ function App() {
             
             {/* Invisible trigger for intersection observer */}
             {hasMore && (
-              <div 
-                ref={observerRef} 
-                style={{ 
-                  height: '20px', 
+              <div
+                ref={observerRef}
+                style={{
+                  height: '1px',
+                  width: '100%',
                   background: 'transparent',
-                  marginTop: '-40px'
                 }}
               />
             )}
