@@ -1,0 +1,53 @@
+.repo-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.repo-card:hover {
+  border-color: #1976d2;
+}
+
+.repo-card h3 {
+  color: #1976d2;
+  margin: 0 0 8px 0;
+}
+
+.repo-card p {
+  color: #333;
+  margin: 0 0 15px 0;
+}
+
+.repo-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.owner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.owner img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.owner span {
+  color: #666;
+  font-size: 14px;
+}
+
+.stars {
+  background: #fff3cd;
+  padding: 4px 8px;
+  border-radius: 12px;
+  color: #856404;
+  font-size: 14px;
+}
