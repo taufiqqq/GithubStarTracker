@@ -1,6 +1,4 @@
-import React from 'react';
-
-export const Loading: React.FC = () => {
+export function Loading(){
   return (
     <div style={{
       display: 'flex',
@@ -27,4 +25,4 @@ export const Loading: React.FC = () => {
       `}</style>
     </div>
   );
-};
+}

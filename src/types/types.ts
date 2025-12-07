@@ -16,3 +16,8 @@ export interface SearchResponse {
   items: Repository[];
   total_count: number;
 }
+
+export interface ErrorMessage{
+  message: string;
+  onRetry?: () => void;
+}

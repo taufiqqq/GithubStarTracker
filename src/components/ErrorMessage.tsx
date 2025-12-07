@@ -1,11 +1,6 @@
-import React from 'react';
+import type { ErrorMessage } from "../types/types";
 
-interface Props {
-  message: string;
-  onRetry?: () => void;
-}
-
-export const ErrorMessage: React.FC<Props> = ({ message, onRetry }) => {
+export function ErrorMessage({message, onRetry} : ErrorMessage) {
   return (
     <div style={{ 
       textAlign: 'center', 
@@ -31,4 +26,4 @@ export const ErrorMessage: React.FC<Props> = ({ message, onRetry }) => {
       )}
     </div>
   );
-};
+}
