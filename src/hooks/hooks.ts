@@ -8,9 +8,13 @@ export const useRepos = () => {
   const [loadingMore, setLoadingMore] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [hasMore, setHasMore] = useState(true);
+
   const pageRef = useRef(1);
+
+  // To track when loading is in progress to prevent duplicate requests
   const isLoadingRef = useRef(false);
 
+  //Load repos for given page
   const loadRepos = useCallback(async (page: number, append = false) => {
     if (isLoadingRef.current) return;
     
@@ -42,12 +46,15 @@ export const useRepos = () => {
     }
   }, []);
 
+  //Load more repos for next page
   const loadMore = useCallback(() => {
+    //Only load more if not already loading and has more data
     if (!isLoadingRef.current && hasMore) {
       loadRepos(pageRef.current + 1, true);
     }
   }, [hasMore, loadRepos]);
 
+  //Retry from start or after error
   const retry = useCallback(() => {
     pageRef.current = 1;
     setRepos([]);
@@ -55,6 +62,7 @@ export const useRepos = () => {
     loadRepos(1);
   }, [loadRepos]);
 
+  //Trigger initial load
   useEffect(() => {
     loadRepos(1);
   }, [loadRepos]);

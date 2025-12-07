@@ -19,6 +19,7 @@ export const fetchTrendingRepos = async (page = 1): Promise<SearchResponse> => {
       throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
     }
     
+    console.log('Fetching data');
     const data = await response.json();
     return data;
   } catch (error) {
